@@ -1,12 +1,13 @@
 // App.js
 import React, { useState, useEffect, useCallback } from 'react';
 import TimeoutModal from './components/TimeoutModal';
+import Navbar from './components/Home/Navbar';
 
 const App = () => {
   const [showModal, setShowModal] = useState(false);
   const [timeoutId, setTimeoutId] = useState(null);
 
-  const INACTIVITY_LIMIT = 5 * 1000; 
+  const INACTIVITY_LIMIT = 60 * 1000; 
 
   const resetTimeout = useCallback(() => {
     if (timeoutId) {
@@ -53,10 +54,19 @@ const App = () => {
   }, [resetTimeout, timeoutId]);
 
   return (
+    <React.Fragment>
     <div className="App">
       <h1>React Timeout Modal Example</h1>
       <TimeoutModal show={showModal} onClose={handleLogout} onExtend={handleExtend} />
+   <div>
+<Navbar/>
+   </div>
+   <div>
+   <Navbar/>
     </div>
+    </div>
+    <Navbar/>
+    </React.Fragment>
   );
 };
 
